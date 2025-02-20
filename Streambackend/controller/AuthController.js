@@ -27,6 +27,7 @@ async function signuphandler(req,res) {
         }
         //if user doies not exist then add user in db then create token 
         const newuser=await UserModel.create(userobj);
+        console.log(newuser)
         const authToken=await promisedjwtsign({id:newuser["_id"]},process.env.SECRET_KEY)
         res.cookie("jwt",authToken,{
             maxAge:1000*60*60*24,
@@ -162,6 +163,11 @@ async function forgethandler(req,res) {
                 message:"user not found for this email"
             })
         }
+        if(user.otp!=undefined || user.otpExpiry!=undefined){
+            user.otp=undefined;
+            user.otpExpiry=undefined;
+        }
+        
         //otp bnao and database me save karo
         const otp= otpgenerator();
         
@@ -179,6 +185,7 @@ async function forgethandler(req,res) {
             userId:user._id
         })
     } catch (error) {
+        console.log("error in forgothandler",error)
         res.status(500).json({
             message: error.message,
             status:"failure"
@@ -188,6 +195,7 @@ async function forgethandler(req,res) {
 async function resethandler(req,res) {
     try {
         //agar body me ye sab nhi h to wapas bhejo
+        // let resetdetails= req.body;
         let resetdetails= req.body;
         if(!resetdetails.password || !resetdetails.otp || !resetdetails.confirmPassword || resetdetails.password!==resetdetails.confirmPassword){
            return  res.status(401).json({

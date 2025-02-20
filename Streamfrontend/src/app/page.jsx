@@ -43,7 +43,7 @@ export default function Home() {
         throw new Error(`API request failed with status: ${resp.status}`);
       }
       const data = resp?.data?.response?.results; // Assuming the response is JSON
-      console.log(data);
+      console.log("data is coming dont worry");
       return data;
     } catch (error) {
       console.error('Error fetching home banner data:', error);
@@ -52,14 +52,14 @@ export default function Home() {
   }
   return (
     <>
-    <div>hello</div>
-      {/* <JumperSection list={list}/> */}
-      {/* <BannerSection fetcher={getHomeBannerData}/> */}
+    
+    <JumperSection list={list}/> 
+    <BannerSection fetcher={getHomeBannerData}/> 
     {/* // list of categories  */}
-      {/* {list.map((item) => {
+    {list.map((item) => {
         return <CategoriesSection key={item.label} title={item.label} id={item.href} fetcher={item.fetcher} />
-      })} */}
-      {/* <Header/> */}
+      })} 
+    <Header/> 
     </>
   );
 }

@@ -16,7 +16,7 @@ async function BannerSection({fetcher}) {
 
 async function BannerSectionContent({fetcher}) {
   const data = await fetcher();
-  console.log(data);
+  // console.log(data);
   if (!data || data.length === 0) {
     return (
       <div className="flex flex-col items-center justify-center w-full h-[500px] py-12">

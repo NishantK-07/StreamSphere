@@ -110,13 +110,7 @@ export default function Footer() {
           <p className="md:text-sm text-xs">
             Copyright © 2024 Viacom18 Media PVT LTD. All rights reserved.
           </p>
-          <Image
-            src="/jio-logo.png"
-            alt="Jio Logo"
-            width={48}
-            height={48}
-            className="md:h-12 md:w-12 h-10 w-10"
-          />
+          StreamSphere
         </div>
       </div>
     </footer>

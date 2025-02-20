@@ -12,14 +12,14 @@ const AuthRouter=express.Router();
 // app.get("/logout",logouthandler)
 // app.patch("/api/auth/forgetpassword",forgethandler)
 // app.patch("/api/auth/resetpassword/:userId",resethandler)
-
+AuthRouter.patch("/forgetpassword",forgethandler)
+AuthRouter.patch("/resetpassword/:userId",resethandler)
 AuthRouter.post("/login",loginhandler);
 AuthRouter.post("/signup",signuphandler);
 // AuthRouter.use(protecdrouteMiddleware)
 //profile ke aage protecdroute lga h jo ki ek middleware hai
 AuthRouter.get("/profile",profilehandler)
 AuthRouter.post("/logout",logouthandler)
-// AuthRouter.patch("/api/auth/forgetpassword",forgethandler)
-// AuthRouter.patch("/api/auth/resetpassword/:userId",resethandler)
+
 
 module.exports= AuthRouter

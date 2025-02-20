@@ -23,7 +23,7 @@ const UserProfileSheet = () => {
   const dispatch = useDispatch();
   const router = useRouter();
   const userData = useSelector((state) => state.userstate);
-console.log(userData)
+// console.log(userData)
   const handleClick = async () => {
     try {
       const res = await axios.post(`http://localhost:3010/api/auth/logout`,{},{

@@ -61,8 +61,9 @@ UserSchema.pre("save", async function(next){
     const password = user.password;
     const confirmPassword = user.confirmPassword;
     if (password == confirmPassword) {
-        delete user.confirmPassword
-        user.password = await bcrypt.hash(password, 10);
+        // delete user.confirmPassword
+    //     user.password = await bcrypt.hash(password, 10);
+    next()
     } else {
         const err = new Error("Password and confirmPassword are not the same ")
         next(err)

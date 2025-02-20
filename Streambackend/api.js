@@ -6,7 +6,7 @@ const app= express();
 //allow api calls from frontend
 app.use(cors({
     origin: 'http://localhost:3000', // Allow requests from your frontend
-    methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allowed methods
+    methods: ['GET', 'POST', 'PUT', 'DELETE','PATCH'], // Allowed methods
     allowedHeaders: ['Content-Type', 'Authorization'], // Allowed headers
     credentials:true
   }));

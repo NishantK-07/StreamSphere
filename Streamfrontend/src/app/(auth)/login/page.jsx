@@ -112,7 +112,7 @@ function login() {
           </Button>
         </CardFooter>
         <div className="mt-4 text-center text-sm pb-6 flex justify-between px-6">
-          <Link href="/resetPassword">Forgot Password?</Link>
+          <Link href="/forgotpasswrod">Forgot Password?</Link>
           <div>
             
             <Link href="/signup" className="">

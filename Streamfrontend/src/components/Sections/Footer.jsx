@@ -3,7 +3,7 @@ import Link from "next/link";
 
 const headings = [
   {
-    title: "JioCinema",
+    title: "StreamSphere",
     links: ["For You", "Sports", "Movies", "TV Shows"],
   },
   {

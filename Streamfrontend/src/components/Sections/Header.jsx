@@ -23,7 +23,7 @@ const Header = () => {
     <div className="bg-[#0d0e10] py-4 w-full fixed top-0 z-50  border-b-2 border-b-grey">
       <div className="lg:mx-auto mx-2 lg:px-4 flex items-center text-nowrap">
         <div className="flex items-center">
-          <Link href="/">
+          <Link href="/" className="lg:text-3xl text-white">
            StreamSphere
             
           </Link>
@@ -33,7 +33,7 @@ const Header = () => {
           >
             <Image src="/crown.svg" height={16} width={16} alt="crown" />
             <span className="pr-4">
-              {userData?.user?.isPremium ? "" : "Go "}Premium
+              {userData?.user?.isPremium ? "" : "Get"}Premium
             </span>
           </Link>
         </div>

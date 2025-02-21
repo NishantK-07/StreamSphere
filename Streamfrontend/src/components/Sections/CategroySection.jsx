@@ -4,7 +4,8 @@ import { Skeleton } from '../atom/Skeleton'
 import { media } from '@/lib/api';
 import Image from 'next/image';
 import { InboxIcon } from 'lucide-react';
-
+import { getWatchUrl } from '@/lib/utils';
+import Link from "next/link";
 
 function CategoriesSection({ title, id,fetcher }) {
     return (
@@ -35,18 +36,22 @@ async function CategoriesContent({fetcher}) {
     }
     
 
-    return <ul className="flex gap-4 w-full overflow-scroll scrollbar-hide">
-         {data?.map((post) => {
-            return <Image
-                src={media(post?.poster_path)}
-                alt=""
-                width={200}
-                height={300}
-                className="min-w-[200px] h-[300px] rounded-lg object-cover"
-                quality={30}
-            />
+    return (<ul className="flex gap-4 w-full overflow-scroll scrollbar-hide">
+         {data?.map((post,index) => {
+            return (
+                <Link key={index} href={getWatchUrl(post.id,post.media_type)} >
+                    <Image
+                        src={media(post?.poster_path)}
+                        alt=""
+                        width={200}
+                        height={300}
+                        className="min-w-[200px] h-[300px] rounded-lg object-cover"
+                        quality={30}
+                    />
+            </Link>
+            )
         })} 
-    </ul>
+    </ul>)
 }
 
 function CategoriesFallback() {

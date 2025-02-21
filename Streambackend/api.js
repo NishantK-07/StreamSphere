@@ -57,6 +57,10 @@ app.use("/api/payment", PaymentRouter);
 const UserRouter = require("./router/UserRouter");
 app.use("/api/user", UserRouter);
 
+const StreamRouter = require("./router/StreamRouter");
+app.use("/api/video",StreamRouter)
+
+
 app.listen(3010,function(){
     console.log("server listening")
 })

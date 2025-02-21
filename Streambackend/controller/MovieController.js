@@ -86,9 +86,10 @@ const getActionMovies = async (req, res) => {
       if (!id) throw new Error("Video Id is not defined.");
       const details = await tmdbApi.get(TMDB_ENDPOINT.fetchMovieVideos(id));
   
+      // console.log(details)
       res.status(200).json({
         status: "success",
-        response: data,
+        response: details,
       });
     } catch (err) {
       res.status(500).json({

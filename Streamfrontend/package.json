@@ -24,6 +24,7 @@
     "next": "14.2.13",
     "react": "^18",
     "react-dom": "^18",
+    "react-razorpay": "^3.0.1",
     "react-redux": "^9.2.0",
     "react-router-dom": "^7.2.0",
     "react-toastify": "^11.0.3",

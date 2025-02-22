@@ -5,7 +5,7 @@ const util= require("util");
 const promisify=util.promisify;
 const promisedjwtsign=promisify(jwt.sign)
 const promisedjwtverify=promisify(jwt.verify)
-const SECRET_KEY="ajsdflsd";
+
 //if user already exists in database
 async function signuphandler(req,res) {
     try {
@@ -32,6 +32,7 @@ async function signuphandler(req,res) {
         res.cookie("jwt",authToken,{
             maxAge:1000*60*60*24,
             httpOnly:true,
+            path: "/" 
         })
         res.status(201).json({
             message:"user signedup sucessfully",
@@ -49,6 +50,7 @@ async function loginhandler(req,res){
     try {
         const {email,password}=req.body;
         const user=await UserModel.findOne({email});
+        console.log(user)
         if(!user){
             return res.status(404).json({
                 message:"invalid email or password",
@@ -61,10 +63,13 @@ async function loginhandler(req,res){
                 status:"failure"
             })
         }
+        console.log(user["_id"]);
         const authToken=await promisedjwtsign({id:user["_id"]},process.env.SECRET_KEY);
+        console.log("login ke time generated token",authToken)
         res.cookie("jwt",authToken,{
             maxAge:1000*60*60*24,
-            httpOnly:true
+            httpOnly:true,
+            path: "/" 
         })
         res.status(200).json({
             message:"logined succesfully",
@@ -75,6 +80,7 @@ async function loginhandler(req,res){
                 email: user.email,
                 isPremium: user.isPremium,  // You can send other fields as needed
               },
+           
         })
     } catch (error) {
         res.status(500).json({
@@ -86,20 +92,24 @@ async function loginhandler(req,res){
 
 async function protecdrouteMiddleware(req,res,next) {
     try {
-        const token=req.cookies.jwt;
+        const authtoken=req.cookies;
+        console.log(authtoken)
+        const token=authtoken.jwt;
+        console.log("tera token",token)
         if(!token){
             return res.status(404).json({
-                message:"unauthorised access",
+                message:"unauthorised access of token",
                 status:"failure"
             })
         }
+      
         const decrypttoken=await promisedjwtverify(token,process.env.SECRET_KEY);
-        req.id==decrypttoken.id;
+        req.userId=decrypttoken.id;
         next();
     } catch (error) {
         res.status(500).json({
             message: error.message,
-            status:"failure"
+            status:"failure in catch protected route"
         })
     }
 }

@@ -3,6 +3,10 @@ const cors = require('cors');
 const express=require("express");
 const app= express();
 
+const corsConfig = {
+    origin: true,
+    credentials: true,
+  };
 //allow api calls from frontend
 app.use(cors({
     origin: 'http://localhost:3000', // Allow requests from your frontend
@@ -10,6 +14,8 @@ app.use(cors({
     allowedHeaders: ['Content-Type', 'Authorization'], // Allowed headers
     credentials:true
   }));
+  app.use(cors(corsConfig));
+app.options("*", cors(corsConfig));
 
 const dotenv=require("dotenv")
 dotenv.config();

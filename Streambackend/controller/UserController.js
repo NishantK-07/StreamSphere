@@ -50,8 +50,10 @@ const getCurrentUser = async (req, res) => {
 
 const addToWishlist = async (req, res) => {
   try {
+    const token=req.cookies.jwt
+    console.log(token)
     const userId = req.userId;
-    const { id, media_type } = req.body;
+    // const { id, media_type } = req.body;
     const user = await UserModel.findById(userId);
     if (!user) {
       return res.status(404).send("User not found");
@@ -79,12 +81,14 @@ const addToWishlist = async (req, res) => {
 
     res.status(200).json({
       status: "success",
+      data:token
     });
   } catch (error) {
     console.log("error: ", error);
     res.status(500).json({
       message: error.message,
       status: "failure",
+      
     });
   }
 };

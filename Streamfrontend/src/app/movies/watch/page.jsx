@@ -1,6 +1,6 @@
-import { buttonVariants } from "@/components/ui/button";
-// import ShareButton from "@/components/ui/share-button";
-// import WishlistButton from "@/components/ui/wishlist-button";
+import { buttonVariants } from "@/components/Ui/button";
+import ShareButton from "@/components/Ui/Sharebutton";
+import Wishlistbutton from "@/components/Ui/Wishlisbutton";
 import { api, ENDPOINT } from "@/lib/api";
 import { FilmIcon } from "lucide-react";
 import Link from "next/link";
@@ -23,15 +23,15 @@ const page = async ({ searchParams: { id } }) => {
           />
           <div className="flex flex-wrap gap-4 px-4 lg:px-10 py-8 items-center">
             <h1 className="text-2xl font-bold">{details.name}</h1>
-            {/* <WishlistButton
+            <Wishlistbutton
               wishlist={{
                 id: id,
                 poster_path: details.poster_path,
                 name: details.name,
                 media_type: details.media_type || "movie",
               }}
-            /> */}
-            {/* <ShareButton /> */}
+            />
+            <ShareButton />
           </div>
         </>
       ) : (

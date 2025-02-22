@@ -11,12 +11,12 @@ const getPaymentController=async (req,res)=>{
     try {
         const amount = 100;
         const currency = "INR";
-        const receipt = `rp_${uid.rnd()}`;
+        const receipt = `RECIPT_ID`;
 
         const orderConfig = {
-            amount: amount * 10,
+            amount: amount * req.body.amount,
             currency: currency,
-            receipt: receipt
+            receipt: +receipt+Date.now()
         }
         const order = await razorpayInstance.orders.create(orderConfig);
         console.log("order", order);

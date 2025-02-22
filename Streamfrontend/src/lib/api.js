@@ -44,6 +44,7 @@ export const ENDPOINT = {
  
 export const api = axios.create({
   baseURL: API_BASE_URL, // yha par baseurl ko backend ka url mil gaya jha wo request lgayega
+  withCredentials:true
 });
 
 

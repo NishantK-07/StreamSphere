@@ -28,7 +28,7 @@ async function signuphandler(req,res) {
         }
         //if user doies not exist then add user in db then create token 
         const newuser=await UserModel.create(userobj);
-        console.log(newuser)
+        // console.log(newuser)
         // const authToken=await promisedjwtsign({id:newuser["_id"]},SECRET_KEY)
         // res.cookie("jwt",authToken,{
         //     maxAge: Date.now(),
@@ -54,7 +54,7 @@ async function loginhandler(req,res){
     try {
         const {email,password}=req.body;
         const user=await UserModel.findOne({email});
-        console.log(user)
+        // console.log(user)
         if(!user){
             return res.status(404).json({
                 message:"invalid email or password",
@@ -67,9 +67,9 @@ async function loginhandler(req,res){
                 status:"failure"
             })
         }
-        console.log(user["_id"]);
+        // console.log(user["_id"]);
         const authToken=await promisedjwtsign({id:user["_id"]},process.env.SECRET_KEY);
-        console.log("login ke time generated token",authToken)
+        // console.log("login ke time generated token",authToken)
         res.cookie("jwt",authToken,{
             maxAge: 1000 * 60 * 60 * 24,
             httpOnly: false,
@@ -79,7 +79,7 @@ async function loginhandler(req,res){
          
            
         })
-        console.log("cookie is set")
+        // console.log("cookie is set")
         res.status(200).json({
             message:"logined succesfully",
             status:"success",
@@ -102,9 +102,9 @@ async function loginhandler(req,res){
 async function protecdrouteMiddleware(req,res,next) {
     try {
         const authtoken=req.cookies;
-        console.log(authtoken)
+        // console.log(authtoken)
         const token=authtoken.jwt;
-        console.log("tera token",token)
+        // console.log("tera token",token)
         if(!token){
             return res.status(404).json({
                 message:"unauthorised access of token",
@@ -202,7 +202,7 @@ async function forgethandler(req,res) {
         await user.save({validateBeforeSave:false});
 
         //now try to send email for otp
-      console.log(user)
+    //   console.log(user)
         res.status(200).json({
             message:"otp sent succesfully",
             status:"sucess",
@@ -211,7 +211,7 @@ async function forgethandler(req,res) {
             userId:user._id
         })
     } catch (error) {
-        console.log("error in forgothandler",error)
+        // console.log("error in forgothandler",error)
         res.status(500).json({
             message: error.message,
             status:"failure"
@@ -232,7 +232,7 @@ async function resethandler(req,res) {
         const userId= req.params.userId;
         const user=await UserModel.findById(userId)
         //if user not found
-        console.log(user)
+        // console.log(user)
         if(user==null){
             return res.status(401).json({
                 status:"failure",
@@ -266,7 +266,7 @@ async function resethandler(req,res) {
         user.otp=undefined;
         user.otpExpiry=undefined;
         await user.save();
-        console.log(user)
+        // console.log(user)
         return res.status(200).json({
             status:"sucess ",
             message:"password reset successfull",

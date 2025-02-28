@@ -16,21 +16,13 @@ mongoose.connect(dblink).then(function(connection){
         console.log(err)
     })
 
-// const UserModel= require("./Models/Express/Usermodel")
-// const usercontrollerobj=require("./userController")
-// or
+
 app.use(express.json());
 const cookieparser=require("cookie-parser")
 app.use(cookieparser())
 app.use(morgan("dev"));
 
-//allow api calls from frontend
-// app.use(cors({
-//     origin: 'http://localhost:3000', // Allow requests from your frontend
-//     methods: ['GET', 'POST', 'PUT', 'DELETE','PATCH','OPTIONS'], // Allowed methods
-//     allowedHeaders: ['Content-Type', 'Authorization','X-Requested-With','X-HTTP-Method-Override','Accept'], // Allowed headers
-//     credentials:true
-//   }));
+
 const corsConfig = {
   origin: true, // Allow requests from your frontend
   methods: ['GET', 'POST', 'PUT', 'DELETE','PATCH'], // Allowed methods
@@ -39,13 +31,6 @@ const corsConfig = {
 };
 app.use(cors(corsConfig));
 app.options("*", cors(corsConfig));
-// const {createuser,getalluser,getuserbyid,deleteuser}=require("./Controller/userController")
-// //this part is for userController
-// app.post("/user",createuser)
-// app.get("/user",getalluser)
-// app.get("/user/:id",getuserbyid)
-// app.delete("/user/:id",deleteuser)
-
 
 
 const AuthRouter=require("./router/AuthRouter")

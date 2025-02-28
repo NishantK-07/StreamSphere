@@ -19,13 +19,13 @@ const getPaymentController=async (req,res)=>{
             receipt: +receipt+Date.now()
         }
         const order = await razorpayInstance.orders.create(orderConfig);
-        console.log("order", order);
+        // console.log("order", order);
         res.status(201).json({
             status: "success",
             order: order
         })
     } catch (err) {
-        console.log("err", err);
+        // console.log("err", err);
         res.status(500).json({
             status: "failure",
             message: err.message
@@ -48,7 +48,7 @@ const updatePremiumAccessController = async (req, res) => {
       );
       res.json({ message: { isPremium: true } });
     } catch (err) {
-      console.log(err);
+      // console.log(err);
       res.status(500).json({ error: "Internal Server Error" });
     }
   };

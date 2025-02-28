@@ -29,11 +29,12 @@ const UserProfileSheet = () => {
       const res = await axios.post(`http://localhost:3010/api/auth/logout`,{},{
         withCredentials:true
       });
+      console.log(res)
       console.log("response of logout",res)
       if (res.data.status === "success") {
         dispatch(userLoggedOutDetails());
         router.push("/");
-        toast.success("Logout Successfull")
+        // toast.success("Logout Successfull")
       }
     } catch (err) {
       console.log("err in logout: ", err);

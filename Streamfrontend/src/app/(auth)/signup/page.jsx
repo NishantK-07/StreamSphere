@@ -45,10 +45,12 @@ function signup() {
         email: email,
         password: password,
         confirmPassword: confirmPassword,
+      },{
+        withCredentials:true
       });
       if (res.data.status === "success") {
         dispatch(userLoggedInDetails(res.data.user));
-        router.push("/login");
+        router.push("/");
       }
       if (res.data) {
         toast({

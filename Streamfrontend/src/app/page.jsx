@@ -53,12 +53,12 @@ export default function Home() {
   return (
     <>
     
-    {/* <JumperSection list={list}/>  */}
-    {/* <BannerSection fetcher={getHomeBannerData}/>  */}
+    <JumperSection list={list}/> 
+    <BannerSection fetcher={getHomeBannerData}/> 
     {/* // list of categories  */}
-    {/* {list.map((item) => {
+    {list.map((item) => {
         return <CategoriesSection key={item.label} title={item.label} id={item.href} fetcher={item.fetcher} />
-      })}  */}
+      })} 
 
     </>
   );

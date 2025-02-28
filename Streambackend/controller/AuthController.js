@@ -5,7 +5,8 @@ const util= require("util");
 const promisify=util.promisify;
 const promisedjwtsign=promisify(jwt.sign)
 const promisedjwtverify=promisify(jwt.verify)
-
+// const {SECRET_KEY}=process.env
+// console.log(SECRET_KEY)
 //if user already exists in database
 async function signuphandler(req,res) {
     try {
@@ -28,12 +29,15 @@ async function signuphandler(req,res) {
         //if user doies not exist then add user in db then create token 
         const newuser=await UserModel.create(userobj);
         console.log(newuser)
-        const authToken=await promisedjwtsign({id:newuser["_id"]},process.env.SECRET_KEY)
-        res.cookie("jwt",authToken,{
-            maxAge:1000*60*60*24,
-            httpOnly:true,
-            path: "/" 
-        })
+        // const authToken=await promisedjwtsign({id:newuser["_id"]},SECRET_KEY)
+        // res.cookie("jwt",authToken,{
+        //     maxAge: Date.now(),
+        //     httpOnly: true,
+        //     path: "/",
+        //     sameSite: "None",
+        //     secure: true,
+           
+        // })
         res.status(201).json({
             message:"user signedup sucessfully",
             user:newuser,
@@ -67,10 +71,15 @@ async function loginhandler(req,res){
         const authToken=await promisedjwtsign({id:user["_id"]},process.env.SECRET_KEY);
         console.log("login ke time generated token",authToken)
         res.cookie("jwt",authToken,{
-            maxAge:1000*60*60*24,
-            httpOnly:true,
-            path: "/" 
+            maxAge: 1000 * 60 * 60 * 24,
+            httpOnly: false,
+            path: "/",
+            // sameSite: "None",
+            // secure: true,
+         
+           
         })
+        console.log("cookie is set")
         res.status(200).json({
             message:"logined succesfully",
             status:"success",
@@ -138,6 +147,13 @@ async function profilehandler(req,res) {
 
 async function logouthandler(req,res) {
     try {
+        // res.cookie("jwt", "", {
+        //     maxAge: Date.now(),
+        //     httpOnly: true,
+        //     path: "/",
+        //     sameSite: "None",
+        //     secure: true,
+        // });
         res.clearCookie('jwt',{path:"/"});
         res.json({
             message:"logout successfullu",

@@ -21,11 +21,10 @@ function forgetpassword(){
     const { toast } = useToast();
     const router = useRouter();
     const [email, setEmail] = useState('');
-  const [otp, setOtp] = useState('');
-  // const navigate = useNavigate();
-  const [loading, setLoading] = useState(false);
-  const [message, setMessage] = useState('');
-  const [statusMessage, setStatusMessage] = useState('');
+    const [otp, setOtp] = useState('');
+    const [loading, setLoading] = useState(false);
+    const [message, setMessage] = useState('');
+    const [statusMessage, setStatusMessage] = useState('');
 
   
 const handleForgotPassword=async (e)=>{
@@ -91,7 +90,7 @@ const sendotp = (otp) => {
 };
     return (
         <>
-            <div className="h-screen flex items-center justify-center">
+            <div className="h-screen flex items-center justify-center bg-gray-50 p-4">
         <Card className="w-full max-w-sm">
           <CardHeader>
             <CardTitle className="text-xl">

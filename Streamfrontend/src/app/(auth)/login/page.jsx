@@ -55,7 +55,10 @@ function login() {
       const res = await axios.post(`http://localhost:3010/api/auth/login`, {
         email: email,
         password: password,
+      },{
+        withCredentials:true
       });
+      console.log(res)
       if (res.data.status === "success") {
         dispatch(userLoggedInDetails(res.data));
         // setTimeout(() => {

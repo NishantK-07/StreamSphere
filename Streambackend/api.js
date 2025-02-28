@@ -1,21 +1,10 @@
 const mongoose =require("mongoose");
 const cors = require('cors');
 const express=require("express");
+
+const morgan=require("morgan")
 const app= express();
 
-const corsConfig = {
-    origin: true,
-    credentials: true,
-  };
-//allow api calls from frontend
-app.use(cors({
-    origin: 'http://localhost:3000', // Allow requests from your frontend
-    methods: ['GET', 'POST', 'PUT', 'DELETE','PATCH'], // Allowed methods
-    allowedHeaders: ['Content-Type', 'Authorization'], // Allowed headers
-    credentials:true
-  }));
-  app.use(cors(corsConfig));
-app.options("*", cors(corsConfig));
 
 const dotenv=require("dotenv")
 dotenv.config();
@@ -33,8 +22,23 @@ mongoose.connect(dblink).then(function(connection){
 app.use(express.json());
 const cookieparser=require("cookie-parser")
 app.use(cookieparser())
+app.use(morgan("dev"));
 
-
+//allow api calls from frontend
+// app.use(cors({
+//     origin: 'http://localhost:3000', // Allow requests from your frontend
+//     methods: ['GET', 'POST', 'PUT', 'DELETE','PATCH','OPTIONS'], // Allowed methods
+//     allowedHeaders: ['Content-Type', 'Authorization','X-Requested-With','X-HTTP-Method-Override','Accept'], // Allowed headers
+//     credentials:true
+//   }));
+const corsConfig = {
+  origin: true, // Allow requests from your frontend
+  methods: ['GET', 'POST', 'PUT', 'DELETE','PATCH'], // Allowed methods
+  allowedHeaders: ['Content-Type', 'Authorization','X-Requested-With','X-HTTP-Method-Override','Accept'], // Allowed headers
+  credentials:true
+};
+app.use(cors(corsConfig));
+app.options("*", cors(corsConfig));
 // const {createuser,getalluser,getuserbyid,deleteuser}=require("./Controller/userController")
 // //this part is for userController
 // app.post("/user",createuser)

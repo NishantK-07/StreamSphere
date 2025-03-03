@@ -10,13 +10,11 @@ import { navLinks } from "./header";
 import { usePathname } from "next/navigation";
 import { useDispatch, useSelector } from "react-redux";
 import { userLoggedOutDetails } from "@/Redux/UserSlice";
-// import { ToastContainer, toast } from 'react-toastify';
-// import 'react-toastify/dist/ReactToastify.css';
-import { useToast } from "@/components/Ui/use-toast"
+import { toast } from "sonner";
 import axios from "axios";
 
 const UserProfileSheet = () => {
-    const { toast } = useToast()
+    // const { toast } = useToast()
   const path = usePathname();
   const activeTabKey = path.split("/")?.[1];
   const [open, setOpen] = useState(false);
@@ -34,7 +32,7 @@ const UserProfileSheet = () => {
       if (res.data.status === "success") {
         dispatch(userLoggedOutDetails());
         router.push("/");
-        // toast.success("Logout Successfull")
+        toast.success("Logout Successfull")
       }
     } catch (err) {
       console.log("err in logout: ", err);

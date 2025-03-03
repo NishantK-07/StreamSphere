@@ -12,7 +12,7 @@ import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { useToast } from "@/components/Ui/use-toast";
+import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import { LucideLoader2 } from "lucide-react";
 import axios from "axios";
@@ -22,7 +22,6 @@ import axios from "axios";
 
 function resetPassword() {
 
-  // const { toast } = useToast();
   const router = useRouter();
   const params = useParams()
   // const { userId } = router.query;
@@ -47,13 +46,13 @@ function resetPassword() {
       confirmPassword.length === 0 ||
       otp.length == 0
     ) {
-      // toast({ title: "Please fill all fields" });
+      toast({ title: "Please fill all fields" });
       setMessage("Please fill all fields")
       setLoading(false);
       return;
     }
     if (password !== confirmPassword) {
-      // toast({ title: "New password and Confirm password do not match" });
+      toast({ title: "New password and Confirm password do not match" });
       setMessage("New password and Confirm password do not match")
       setLoading(false);
       return;
@@ -67,11 +66,11 @@ function resetPassword() {
       );
 console.log(res)
       if (res.data.status =="sucess ") {
-        // toast({ title: "Password reset successfully!" });
+        toast({ title: "Password reset successfully!" });
         setMessage("Password reset successfully!" )
         router.push("/login");
       } else {
-        // toast({ title: "Failed to reset password. Try Again" });
+        toast({ title: "Failed to reset password. Try Again" });
         setMessage("Failed to reset password. Try Again")
       }
     } catch (err) {

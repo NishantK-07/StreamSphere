@@ -18,14 +18,10 @@ import { LogIn, LucideLoader2 } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { userLoggedInDetails } from "@/Redux/UserSlice";
 import { useDispatch } from "react-redux";
-// import { useToast } from "@/components/ui/use-toast";
-// import { Toaster } from "@/components/ui/toaster"
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { toast } from "sonner";
 import axios from "axios";
 
 function signup() {
-  // const { toast } = useToast()
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -53,16 +49,11 @@ function signup() {
         router.push("/");
       }
       if (res.data) {
-        toast({
-          title: "Account Created!",
-        });
+        toast("Account Created!");
       }
     } catch (err) {
       console.log("err: ", err);
-      toast({
-        title: err.response?.data?.message || "Something went wrong",
-        variant: "destructive",
-      });
+      toast("Something went wrong");
     } finally {
       setLoading(false);
     }

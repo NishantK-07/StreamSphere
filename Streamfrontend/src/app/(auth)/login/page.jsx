@@ -16,22 +16,16 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import Link from "next/link";
-
-
-// import { api, ENDPOINT } from "@/lib/api";
 import { LucideLoader2 } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useDispatch, useSelector } from "react-redux";
 import { userLoggedInDetails } from "@/Redux/UserSlice";
-// import { ToastContainer, toast } from 'react-toastify';
-// import 'react-toastify/dist/ReactToastify.css';
-
-import { useToast } from "@/components/Ui/use-toast"
+import { toast } from "sonner";
 import axios from "axios";
 
 
 function login() {
-  const { toast } = useToast()
+  // const { toast } = useToast()
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
@@ -67,8 +61,8 @@ function login() {
       }
     } catch (err) {
       console.log("err: ", err);
-      // toast.error("Invalid credentials");
-      toast({ title: "Invalid credentials", variant: 'destructive' });
+      toast.error("Invalid credentials", { position: "top-right", autoClose: 5000 });
+      // toast({ title: "Invalid credentials", variant: 'destructive' });
     } finally {
       setLoading(false);
     }

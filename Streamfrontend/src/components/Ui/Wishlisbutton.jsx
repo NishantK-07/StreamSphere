@@ -3,7 +3,7 @@
 import React from "react";
 import { Button } from "./button";
 import { PlusIcon } from "lucide-react";
-import { toast } from "./use-toast";
+import { toast } from "sonner";
 import { useSelector } from "react-redux";
 import axios from "axios";
 const WishlistButton = ({ wishlist }) => {
@@ -14,9 +14,7 @@ const WishlistButton = ({ wishlist }) => {
     try {
       const res = await axios.post(`http://localhost:3010/api/user/wishlist`, wishlist,{withCredentials:true});
       if (res.data) {
-        toast({
-          title: "Added to Wishlist!",
-        });
+        toast("Added to watchList");
       }
     } catch (er) {
       console.log(er);

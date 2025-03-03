@@ -4,9 +4,7 @@ import Header from "@/components/Sections/Header";
 import Footer from "@/components/Sections/Footer";
 import StoreProvider from "@/Provider/StoreProvider";
 import AuthProvider from "@/Provider/AuthProvider";
-import { Toaster } from "@/components/ui/toaster";
-// import { ToastContainer, toast } from 'react-toastify';
-// import 'react-toastify/dist/ReactToastify.css';
+import { Toaster } from "@/components/ui/sonner"
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
@@ -32,8 +30,7 @@ export default function RootLayout({ children }) {
           <Header/>
           {children}
           <Footer/>
-          {/* <ToastContainer/> */}
-          <Toaster />
+          <Toaster/>
         </AuthProvider>
       </body>
     </html> 

@@ -53,6 +53,13 @@ const SubscriptionPage = props => {
       setLoading(false)
       return
     }
+    if(!userData){
+      toast({
+        title:"Please login first"
+      })
+      setLoading(false);
+      return;
+    }
     try {
       if (!userData.isLoggedIn) {
         toast({ title: "Login to get premium" })

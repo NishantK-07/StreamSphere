@@ -6,7 +6,7 @@ import { ChevronRightIcon, ExternalLinkIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { navLinks } from "./header";
+import { navLinks } from "./Header";
 import { usePathname } from "next/navigation";
 import { useDispatch, useSelector } from "react-redux";
 import { userLoggedOutDetails } from "@/Redux/UserSlice";

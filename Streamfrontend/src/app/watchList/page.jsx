@@ -2,7 +2,7 @@
 
 import CategoryList, {
   CategoryListFallback,
-} from "@/components/sections/CategoryList";
+} from "@/components/Sections/CategoryList";
 import { buttonVariants } from "@/components/Ui/button";
 import { api, ENDPOINT } from "@/lib/api";
 import { cn } from "@/lib/utils";

@@ -6,7 +6,7 @@ import {
   CardHeader,
   CardTitle,
   CardFooter
-} from "@/components/ui/card";
+} from "@/components/Ui/card";
 import { useParams } from 'next/navigation'
 import { Label } from "@/components/Ui/label";
 import { Input } from "@/components/Ui/input";

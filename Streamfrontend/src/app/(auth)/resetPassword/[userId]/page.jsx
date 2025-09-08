@@ -8,10 +8,10 @@ import {
   CardFooter
 } from "@/components/ui/card";
 import { useParams } from 'next/navigation'
-import { Label } from "@/components/ui/label";
-import { Input } from "@/components/ui/input";
+import { Label } from "@/components/Ui/label";
+import { Input } from "@/components/Ui/input";
 import React, { useState } from "react";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/Ui/button";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import { LucideLoader2 } from "lucide-react";

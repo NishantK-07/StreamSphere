@@ -1,4 +1,4 @@
-import { buttonVariants } from "@/components/ui/button";
+import { buttonVariants } from "@/components/Ui/button";
 import ShareButton from "@/components/Ui/Sharebutton";
 import WishlistButton from "@/components/Ui/Wishlisbutton";
 import { api, ENDPOINT } from "@/lib/api";

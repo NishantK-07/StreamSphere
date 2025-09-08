@@ -1,7 +1,7 @@
 import {  media } from '@/lib/api'
 import React, { Suspense } from 'react'
 import { Skeleton } from '../atom/Skeleton';
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '../ui/carousel';
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '../Ui/carousel';
 import Image from 'next/image';
 
 async function BannerSection({fetcher}) {

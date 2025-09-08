@@ -12,7 +12,7 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
+} from "@/components/Ui/card";
 import { Input } from "@/components/Ui/input";
 import { Label } from "@/components/Ui/label";
 import Link from "next/link";

@@ -55,7 +55,7 @@ app.use("/api/user", UserRouter);
 const StreamRouter = require("./router/StreamRouter");
 app.use("/api/video",StreamRouter)
 
-
-app.listen(3010,function(){
+const PORT = process.env.PORT || 3010;
+app.listen(PORT,function(){
     console.log("server listening")
 })

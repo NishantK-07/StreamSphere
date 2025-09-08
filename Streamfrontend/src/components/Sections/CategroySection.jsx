@@ -13,7 +13,7 @@ function CategoriesSection({ title, id,fetcher }) {
             <h2 id={id} className="text-2xl font-medium mb-6 scroll-m-[100px]">
                 {title}
             </h2>
-            <Suspense fallback={<CategoriesFallback/> }>
+            <Suspense fallback={<CategoryListFallback/> }>
                 <CategoriesContent fetcher={fetcher} />
             </Suspense>
         </div>
@@ -54,7 +54,7 @@ async function CategoriesContent({fetcher}) {
     </ul>)
 }
 
-function CategoriesFallback() {
+function CategoryListFallback() {
     return (
         <ul className="flex gap-4 w-full overflow-scroll scrollbar-hide ">
             {new Array(12).fill(0).map((e, index) => (

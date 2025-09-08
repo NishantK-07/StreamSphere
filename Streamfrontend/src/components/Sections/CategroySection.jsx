@@ -65,3 +65,4 @@ function CategoryListFallback() {
 }
 
 export default CategoriesSection
+export { CategoryListFallback };

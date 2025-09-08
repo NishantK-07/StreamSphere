@@ -24,7 +24,7 @@ app.use(morgan("dev"));
 
 
 const corsConfig = {
-  origin: true, // Allow requests from your frontend
+  origin: process.env.Frontend_url || true, // Allow requests from your frontend
   methods: ['GET', 'POST', 'PUT', 'DELETE','PATCH'], // Allowed methods
   allowedHeaders: ['Content-Type', 'Authorization','X-Requested-With','X-HTTP-Method-Override','Accept'], // Allowed headers
   credentials:true

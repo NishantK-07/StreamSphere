@@ -51,8 +51,8 @@ async function BannerSectionContent({fetcher}) {
         ))}
       </CarouselContent>
       <div className="absolute bottom-4 right-[12%] hidden md:flex">
-        <CarouselPrevious className="w-[60px] h-[60px]" />
-        <CarouselNext className="w-[60px] h-[60px] ml-2" />
+        <CarouselPrevious className="md:left-10 left-2 w-[60px] h-[60px]" />
+        <CarouselNext className=" md:right-10 right-2 w-[60px] h-[60px] ml-2" />
       </div>
     </Carousel>
     // <></>

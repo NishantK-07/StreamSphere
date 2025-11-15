@@ -34,7 +34,7 @@ async function BannerSectionContent({fetcher}) {
         align: "center",
         loop: true,
       }}
-      className="w-full  md:px-0 px-4"
+      className="relative w-full  md:px-0 px-4"
     >
       <CarouselContent className="">
         {data?.map((vid) => (

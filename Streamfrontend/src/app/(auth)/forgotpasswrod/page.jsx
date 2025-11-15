@@ -30,7 +30,7 @@ function forgetpassword(){
 const handleForgotPassword=async (e)=>{
     e.preventDefault();
     try {
-        const response = await axios.patch('http://localhost:3010/api/auth/forgetpassword', { email });
+        const response = await axios.patch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/auth/forgetpassword`, { email });
         console.log("yha ka error----------",response)
         if (response.data.status === "sucess") {
             // toast({ title: "OTP sent successfully!" });

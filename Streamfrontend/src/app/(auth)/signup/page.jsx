@@ -36,7 +36,7 @@ function signup() {
     
 
     try {
-      const res = await axios.post(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/auth/signup`, {
+      const res = await axios.post(`${process.env.NEXT_PUBLIC_API_BASE_URL}/auth/signup`, {
         name: name,
         email: email,
         password: password,

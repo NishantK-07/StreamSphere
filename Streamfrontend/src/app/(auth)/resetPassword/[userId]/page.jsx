@@ -59,7 +59,7 @@ function resetPassword() {
     }
 
     try {
-      const res = await axios.patch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/auth/resetpassword/${userId}`, 
+      const res = await axios.patch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/auth/resetpassword/${userId}`, 
       {  password,confirmPassword,otp},{
         withCredentials:true
       }

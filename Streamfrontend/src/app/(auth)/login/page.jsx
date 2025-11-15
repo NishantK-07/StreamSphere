@@ -46,7 +46,7 @@ function login() {
         // toast({ title: "Please fill all fields" });
         toast("Please fill all fields");
       }
-      const res = await axios.post(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/auth/login`, {
+      const res = await axios.post(`${process.env.NEXT_PUBLIC_API_BASE_URL}/auth/login`, {
         email: email,
         password: password,
       },{

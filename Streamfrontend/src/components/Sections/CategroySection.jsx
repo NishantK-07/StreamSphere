@@ -36,22 +36,23 @@ async function CategoriesContent({fetcher}) {
     }
     
 
-    return (<ul className="flex gap-4 w-full overflow-scroll scrollbar-hide">
-         {data?.map((post,index) => {
-            return (
-                <Link key={index} href={getWatchUrl(post.id,post.media_type)} >
-                    <Image
-                        src={media(post?.poster_path)}
-                        alt=""
-                        width={200}
-                        height={300}
-                        className="min-w-[200px] h-[300px] rounded-lg object-cover"
-                        quality={30}
-                    />
-            </Link>
-            )
-        })} 
-    </ul>)
+    return (
+  <ul className="flex gap-4 w-full overflow-x-scroll overflow-y-hidden scrollbar-hide">
+    {data?.map((post, index) => (
+      <Link key={index} href={getWatchUrl(post.id, post.media_type)}>
+        <Image
+          src={media(post.poster_path)}
+          alt=""
+          width={200}
+          height={300}
+          className="min-w-[200px] h-[300px] rounded-lg object-cover"
+          quality={30}
+        />
+      </Link>
+    ))}
+  </ul>
+)
+
 }
 
 function CategoryListFallback() {

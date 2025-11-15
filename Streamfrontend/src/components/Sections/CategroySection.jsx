@@ -9,7 +9,7 @@ import Link from "next/link";
 
 function CategoriesSection({ title, id,fetcher }) {
     return (
-        <div className="py-8 px-6">
+        <div className="py-8 px-6 overflow-y-hidden">
             <h2 id={id} className="text-2xl font-medium mb-6 scroll-m-[100px]">
                 {title}
             </h2>
@@ -38,19 +38,20 @@ async function CategoriesContent({fetcher}) {
 
     return (
   <ul className="flex gap-4 w-full overflow-x-scroll overflow-y-hidden scrollbar-hide">
-    {data?.map((post, index) => (
-      <Link key={index} href={getWatchUrl(post.id, post.media_type)}>
-        <Image
-          src={media(post.poster_path)}
-          alt=""
-          width={200}
-          height={300}
-          className="min-w-[200px] h-[300px] rounded-lg object-cover"
-          quality={30}
-        />
-      </Link>
-    ))}
-  </ul>
+  {data?.map((post, index) => (
+    <Link key={index} href={getWatchUrl(post.id, post.media_type)}>
+      <Image
+        src={media(post.poster_path)}
+        alt=""
+        width={200}
+        height={300}
+        className="min-w-[200px] h-[300px] rounded-lg object-cover block"
+        quality={30}
+      />
+    </Link>
+  ))}
+</ul>
+
 )
 
 }
@@ -60,7 +61,7 @@ function CategoryListFallback() {
     <ul className="flex gap-4 w-full overflow-x-scroll overflow-y-hidden scrollbar-hide">
 
             {new Array(12).fill(0).map((e, index) => (
-                <Skeleton key={index} className="min-w-[200px] h-[300px] " />
+                <Skeleton key={index} className="min-w-[200px] h-[300px] block " />
             ))}
         </ul>
     )
